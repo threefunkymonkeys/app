@@ -1,0 +1,4 @@
+cuba -v 3.4.0
+pg -v 0.18.1
+sequel -v 4.20.0
+cuba-flash -v 1.0.0

@@ -1,0 +1,6 @@
+.ruby-version
+development.env.sh
+test.env.sh
+staging.env.sh
+production.env.sh
+tags
