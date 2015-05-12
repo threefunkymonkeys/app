@@ -102,3 +102,49 @@ end
 ```
 
 It assumes Postgres as your database, because it's the one of our choice, but you should connect to any database here, as well as make other setup before the application starts.
+
+
+##Default Tasks
+
+The application has a Rakefile with 5 common utility tasks
+
+```
+rake db:migrate       # Run DB migrations on db/migrate directory
+rake db:schema:dump   # Dump the DB schema to db/schema.rb
+rake db:schema:load   # Load the DB schema defined in db/schema.rb
+rake db:test:prepare  # Prepares test DB by copying current dev schema
+rake setup            # Setup application for new name
+rake test:all         # Runs all tests in test/{models/helpers/routes/lib}
+```
+
+All are pretty descriptive and pretty simple. Feel free to remove the `Rakefile` entirely if you don't use a Sequel compatible database though.
+
+### The Setup Task
+
+This is an utility task to help the boostrap of the new application.
+The base application uses the `BaseApp` name in a few places, this task helps you define your app name and replace the `BaseApp` name in the files.
+It is an interactive task and will ask you for your app name and your git repository to set your origin remote.
+
+In case you don't want to use this task and prefer to do it manually, all it does is:
+
+```
+rm -rf .git #Removes base app git info
+mv routes/base.rb routes/yourapp.rb #Renames base routes file
+find ./ -type f | xargs sed -i -e 's/BaseApp/YourApp/' #Replaces BaseApp with YourApp name in every file
+cp env.sh.sample development.env.sh #Copies the sample environment file for the development environment
+```
+
+After that, it will ask you for your app's git information. If you don't have or don't intend to version it under git, it will finish there.
+
+##Dependencies
+
+This app provides the `.gems` and `.gems-test` files listing gem dependencies for the [dep](https://rubygems.org/gems/dep) gem.
+
+Having the gem installed you should do
+
+```
+dep install
+dep install -f .gems-test
+```
+
+If you want to manage your dependencies in any other way, just remove these files and setup your own.
