@@ -83,14 +83,16 @@ end
 
 namespace :test do
   @env = 'test'
-  desc "Test all"
+  desc "Runs all tests in test/{models/helpers/routes/lib}"
   task :all do
+    load_files "test/models/*.rb"
     load_files "test/helpers/*.rb"
     load_files "test/routes/*.rb"
     load_files "test/lib/*.rb"
   end
 end
 
+desc "Setup application for new name"
 task :setup do
   puts "Please, enter your app name. (e.g. MyApp)" unless ARGV[1]
   app_name = ARGV[1] || STDIN.readline.strip
