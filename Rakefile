@@ -112,6 +112,7 @@ task :setup do
   `rm -rf .git`
   `mv routes/base.rb routes/#{file_name}`
   `find ./ -type f | xargs sed -i -e 's/BaseApp/#{app_name}/'`
+  `cp env.sh.sample development.env.sh`
 
   puts "Do you have a git repository already? [y/N]"
   add_remote = STDIN.readline.strip
