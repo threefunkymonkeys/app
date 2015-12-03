@@ -148,3 +148,12 @@ dep install -f .gems-test
 ```
 
 If you want to manage your dependencies in any other way, just remove these files and setup your own.
+
+##Ruby Version
+
+This app provides the `.ruby-version` file with ruby version and gemset name. Copy this file and edit your gemset:
+
+```
+cp ruby-version.sample .ruby-version
+$EDITOR .ruby-version
+```
