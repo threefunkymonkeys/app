@@ -22,7 +22,7 @@ module BaseApp
         env_vars.each_line do |var|
           name, value = var.split("=")
           if name && value
-            ENV[name.strip] = value.strip
+            ENV[name.strip] = value.gsub("\"", "").strip
           end
         end
       end
