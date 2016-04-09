@@ -21,6 +21,8 @@ Cuba.use Rack::MethodOverride
 
 Dir["./lib/**/*.rb"].each     { |rb| require rb }
 Dir["./models/**/*.rb"].each  { |rb| require rb }
+Dir["./validators/**/*.rb"].each  { |rb| require rb }
+Dir["./concerns/**/*.rb"].each  { |rb| require rb }
 Dir["./routes/**/*.rb"].each  { |rb| require rb }
 Dir["./helpers/**/*.rb"].each { |rb| require rb }
 
