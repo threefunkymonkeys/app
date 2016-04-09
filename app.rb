@@ -3,9 +3,9 @@ require "cuba/safe"
 require "cuba/render"
 require "cuba/flash"
 require "sequel"
+require_relative "helpers/environment_helper"
 
 ENV["RACK_ENV"] ||= "development"
-require_relative "helpers/environment_helper"
 BaseApp::Helpers.init_environment(ENV["RACK_ENV"])
 
 Cuba.plugin Cuba::Safe
