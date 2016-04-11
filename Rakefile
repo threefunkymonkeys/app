@@ -94,8 +94,11 @@ end
 
 desc "Setup application for new name"
 task :setup do
+  fail "Operating System not supported" if /windows/ =~ RUBY_PLATFORM.downcase
+
   puts "Please, enter your app name. (e.g. MyApp)" unless ARGV[1]
   app_name = ARGV[1] || STDIN.readline.strip
+  sed_command = (/darwin/ =~ RUBY_PLATFORM.downcase) ? 'sed -i ""' : 'sed -i'
   puts
 
   if app_name == ""
@@ -111,7 +114,7 @@ task :setup do
 
   `rm -rf .git`
   `mv routes/base.rb routes/#{file_name}`
-  `find ./ -type f | xargs sed -i -e 's/BaseApp/#{app_name}/'`
+  `find ./ -type f | xargs #{sed_command} -e 's/BaseApp/#{app_name}/'`
   `cp env.sh.sample development.env.sh`
 
   puts "Do you have a git repository already? [y/N]"

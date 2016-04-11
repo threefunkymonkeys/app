@@ -30,5 +30,5 @@ Cuba.plugin BaseApp::Helpers
 Cuba.use Cuba::Flash
 
 Cuba.define do
-  run BaseRoutes
+  run Routes::Base
 end
