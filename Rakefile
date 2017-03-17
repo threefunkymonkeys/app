@@ -51,7 +51,7 @@ namespace :db do
       puts "Loading schema..."
       env ||= ENV['RACK_ENV'] || "development"
 
-      db = RepostryApp::Helpers.init_environment(env)
+      db = BaseApp::Helpers.init_environment(env)
 
       migration = eval(File.read('./db/schema.rb'))
 
