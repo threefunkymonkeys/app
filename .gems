@@ -1,5 +1,5 @@
-cuba -v 3.8.0
-pg -v 0.20.0
-sequel -v 4.47.0
+cuba -v 3.9.2
+pg -v 1.1.4
+sequel -v 5.23.0
 cuba-flash -v 1.0.0
 tilt -v 2.0.7
