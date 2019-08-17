@@ -9,7 +9,7 @@ module BaseApp
           'port' => ENV["DATABASE_PORT"],
           'user' => ENV["DATABASE_USER"],
           'password' => ENV["DATABASE_PASS"],
-          'db_name' => ENV["DATABASE_NAME"]
+          'database' => ENV["DATABASE_NAME"]
         }
 
         Sequel.postgres(db_params).extension(:pg_array).extension(:pg_json)
