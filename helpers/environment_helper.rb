@@ -1,3 +1,5 @@
+require "logging"
+
 module BaseApp
   module Helpers
     def self.init_environment(env)
@@ -28,6 +30,17 @@ module BaseApp
           end
         end
       end
+    end
+
+    def logger
+      log_level = ENV["LOG_LEVEL"] || :warn
+      output = ENV["LOG_OUTPUT"] || STDOUT
+
+      @@logger ||= Proc.new {
+        logger = Logging.logger(output)
+        logger.level = log_level
+        logger
+      }.call
     end
   end
 end
